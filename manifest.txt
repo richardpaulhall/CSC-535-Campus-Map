@@ -1,0 +1,19 @@
+Manifest.txt
+This file is a list of the files and directories for this project.
+---------------
+<root>
+Rick: "Hide Building" fixed| Map_API_Testbed2 - current.html
+Rick:   include facility.js| Map_API_Testbed2 - current.html
+Rick: created              |manifest.txt
++ <js>
+||Rick:     cleanup| map.js
+||Rick: GeoLocation| map.js
+||Rick:   Reset Map| map.js
+||Rick:       added| facility.js
++ <images>
+||southern-connecticut-state-university-squarelogo-1425561184985.png
++ <css>
+|| menu.css
+|| styles.css
++ <AIkey>
+|| -empty-

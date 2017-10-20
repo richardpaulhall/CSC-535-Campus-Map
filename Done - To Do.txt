@@ -1,0 +1,40 @@
+Done - 
+    Rick    - main aplication fixure
+    Rick    - add / remove markers
+    Rick    - rezoom, relocate
+    Rick    - clean up code
+    Rick    - bind rountine between data and menu
+    Stephen - Main Menu
+    David   - list of location of facilities
+
+In-Progress
+
+	Rick    - Geolocation
+			missing detecting useris off-screen.
+	Rick    - Magnetometer
+	Rick    - cookies
+	Ryan    - infowindow for buidings
+          	  	has issues
+	Stephen - walking directions; Dijkstra's algorighm
+	David   - ?
+
+Features
+  	park my car - special icon at bottom of screen, set "car" icon on screen
+	PopulateMenu with "onclick" calls to Rick's Bind rountine to place building markers
+	Shuttle Bus Stops and City Bus Stops shoud be add or removed from htemap as a group
+		have a clickable icon with the iconsaboe the footer to put them on or off the map
+			the icon should change state, colored if no stops onhe mp, blackif there are 
+  	walking directions
+	outlines of 4 sports fields and parking lots and 2 buildings need to be drawn and added to the map 
+		Maybe we can take the map Google sends and remove only the parts that are irrelevent
+          	keeping the rest
+          	see https://developers.google.com/maps/documentation/javascript/examples/hiding-features
+	application as is includes a large error betweenwhe o are and where the "Where Am I "marker" is placed
+		I noticed this with desktop computers. Maybe latops (with wifi/GPS) will not have that issue
+		(needs testing with mobile devices
+	Food court, other fod/snack venues
+	detect that user has allowed Google permission to geolocate
+	Parking icons, tweak the colors, scale
+        	https://mt.google.com/vt/icon/name=icons/transit/tactile/triplabel/travelmode/drive.png&filter=b200ffff&scale=2
+
+

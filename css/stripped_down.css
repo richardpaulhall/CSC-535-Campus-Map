@@ -1,0 +1,31 @@
+/* HTML Reset */
+* {
+  margin:  0;
+  border:  0;
+  padding: 0;        
+}
+#map {
+position: relative;
+  float:  left; /* keeps right side divs to the right */
+  height: 99vh;
+  width:  99vh;
+  border: 0.5vh solid;
+  color: rgb(0, 51, 173);
+}
+
+#header {
+  height: 10vh;
+}
+#dashboard {
+  height: 77vh;
+}
+#footer {
+  height:      11.5vh; /* Height of the footer */
+  border-width: 0.5vh;
+  border-top:  solid;
+  border-color: rgb(0, 51, 173);
+}
+#floating-panel {
+  border: 1px solid red; /*#999;*/
+}
+

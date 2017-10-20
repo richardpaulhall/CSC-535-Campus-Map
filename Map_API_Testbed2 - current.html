@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><!-- first line, or at least frst 512 characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SCSU Interactive Map - CSC 535">
+    <meta name="author" content="2017-Fall Project team 4">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>SCSU Interactive Map - CSC 535</title>
+    <script type="text/javascript" src="js/facility.js"></script> <!-- RPH 2017/10/10 -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/david.css">
+    <link rel="stylesheet" href="css/richard.css">
+    <link rel="stylesheet" href="css/ryan.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <!--[if lt IE 9]>
+      <script src="js/html5shim.js"></script>
+    <![endif]-->
+
+    <style>
+      #header {
+        position: static;
+      }
+      #dashboard {
+        position: static;
+      }
+      #floating-panel {
+        xposition: absolute;
+        position: static;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #0ff;
+        padding: 5px;
+        border: 1px solid yellow; /*#999;*/
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      input {
+      border: 1px solid blue;
+      }
+     </style>
+
+
+  </head>
+
+<body>
+<div id="todo">
+
+<!--  code to poll magnetometer here
+  https://codepen.io/rlautan/pen/YPzGjo -->
+<!--  application Footer needs lnk to an <About>page:
+          authorship information
+          copyright information
+          contact information
+          sitemap, back to top links (na)
+          related documents > links to SCSU -->
+<!-- Request digital files of the logo, font; contact the Office of Public Affairs. -->
+<!-- Font: Palatino or Venetian 301 -->
+<!-- Google Map
+       Remove extranious icons
+         DONE https://stackoverflow.com/questions/33740372/remove-existing-labels-from-google-map
+       Add SCSU's name to the map
+       Add North pointing arrow
+-->
+
+
+
+</div><!-- id="todo" -->
+
+  <!--  +--------------+
+        |     MAP      |
+        +--------------+ -->
+  <div id="map"></div>
+
+  <!--  +-------------+
+        |    HEADER   |
+        |  SCSU LOGO  |
+        |  SCSU NAME  |
+        +-------------+ -->
+  <div id="header">
+    <img id="SCSUlogo" src="images/southern-connecticut-state-university-squarelogo-1425561184985.png">
+    <div id="NameLeading"></div>
+    <p   class="SCSUname">Southern Connecticut<br>State University</p>
+  </div> <!-- id="header" -->
+
+
+<!-- +-----------+
+     |           |
+     |   MENU    |
+     |           |
+     +-----------+ -->
+
+
+		<ul>
+      	   <li>
+        			  <a href="#home">Home</a>
+      			</li>
+
+      			<li class="dropdown">
+        			  <a class="dropbtn">Buildings</a>
+        			  <div class="dropdown-content">
+          				   <a href="#">ASL</a>
+          				   <a href="#">Davis Hall</a>
+          				   <a href="#" onclick="displayFacilityMarker( EARL_HALL );">Earl Hall</a>
+					           <a href="#">Engleman Hall</a>
+          				   <a href="#">Jennings Hall</a>
+                     <a href="#" onclick="display_MorrilHall();">Morrill Hall</a>
+                     <!-- a href="#" onclick="hideBuilding();">Morrill Hall</a -->
+					           <a href="#">Nursing Classroom Building</a>
+          				   <a href="#">Pelz Gymnasium</a>
+          				   <a href="#">School of Business</a>
+        			   </div>
+      			</li>
+
+      			<li class="dropdown">
+        		    <a class="dropbtn">Parking Lots</a>
+        			  <div class="dropdown-content">
+                  <a href="#" onclick="displayFacilityMarker( FITCH_STREET_GARAGE );">FITCH_STREET_GARAGE</a>
+                  <a href="#" onclick="displayFacilityMarker( P_12B );">Lot 12 B</a>
+          				<a href="#">Faculty</a>
+          				<a href="#">Graduate</a>
+          				<a href="#">Undergraduate</a>
+        			  </div>
+      			</li>
+
+      			<li class="dropdown">
+        			  <a class="dropbtn">Services</a>
+        			  <div class="dropdown-content">
+    	              <!-- ******Police Station Button********* -->
+          				  <a href="#" id ="policeMarker">Police Station</a>
+          				  <a href="#">Shuttle Stops</a>
+          				  <a href="#">Dining Halls</a>
+        			  </div>
+      			</li>
+
+			      <li>
+        			  <a href="#" onclick="doGeolocation();">My Location</a>
+      			</li>
+
+			      <li>
+        			  <a href="#" onclick="hideBuilding();">Remove Markers</a>  <!-- RPH 2017/10/9 -->
+      			</li>
+		  </ul>
+
+
+      <div id="floating-panel">
+        <input onclick="doGeolocation();"  type=button value="Where am I?">  <!-- RPH -->
+        <input onclick="reSetMap();"  type=button value="Reset Map">         <!-- RPH -->
+      </div>
+
+
+<div id="footer">
+  <!-- No Parking Filled icon by Icons8 -->
+  <img src="https://png.icons8.com/no-parking-filled/ios7/25" title="No Parking Filled" width="20vh" height="20vh">
+  <!-- Parking icon by Icons8 -->
+  <img src="https://png.icons8.com/parking/ios7/25" title="Parking" width="20vh" height="20vh">
+  <!-- 25px 32px 50px 75px 100px -->
+
+  <img class="target_image irc_rii" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9o5173c1OzUYbHsLLucqmOURu0i2hUygxFchfRH-3c3Gx6M6b"
+    alt="Related image" style="width: 2vh; margin-top: 0px; height: 2vh;"
+    onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+
+  <img class="target_image irc_rii" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQarcN2hVyG3lP656v4yHiWRXoAHSU-sQ0gBV7c3Jr3XR6ZdLWI"
+    alt="Related image" style="width: 2vh; margin-top: 0px; height: 2vh;" onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)"><br>
+
+  <a id="icons8" href="https://icons8.com">Icon pack by Icons8</a>
+
+</div><!-- id="footer" -->
+
+<!-- script>
+ map = new google.maps.Map(document.getElementById('map'),
+        {   center: {lat: 42.367112, lng: -71.080964},
+    zoom: 16,
+    styles: [
+      {
+        "featureType": "poi",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      }
+    ]
+  });
+-->
+
+    <!-- 41.3326° N, 72.9475° W -->
+    <!--           center: {lat: 41.3326, lng: 72.9475}, showed Europe, so make it negative-->
+    <!-- /script -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOha51O2UNapWWL29M00OyZLlnoWC3Gt8&callback=initMap"
+            async defer></script> <!-- calls map.initMap() to put map on the screen -->
+  </body>
+</html>
